@@ -100,7 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vi=nvim
 alias vim=nvim
 
 export PATH=$PATH:/home/blindenhahn/.local/bin:/usr/lib/jvm/java-17-amazon-corretto/bin:/home/blindenhahn/.cargo/bin
