@@ -267,7 +267,7 @@ exec waybar
 #
 # screenshot to clipborad
 #
-bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy
+bindsym $mod+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 bindsym $mod+Alt+c exec wl-color-picker 
 bindsym $mod+Ctrl+c exec wl-color-picker clipboard
 

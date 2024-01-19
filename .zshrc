@@ -105,6 +105,8 @@ alias vim=nvim
 export PATH=$PATH:/home/blindenhahn/.local/bin:/usr/lib/jvm/java-17-amazon-corretto/bin:/home/blindenhahn/.cargo/bin
 export JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
 
+export QT_QPA_PLATFORM=wayland
+
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
     exec tmux -2 new-session -A -s ${USER} >/dev/null 2>&1
 fi

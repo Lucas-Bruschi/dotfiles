@@ -1,3 +1,4 @@
+---@diagnostic disable: need-check-nil, missing-parameter
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -36,3 +37,41 @@ vim.keymap.set("n", "<leader>bp", vim.cmd.bp)
 vim.keymap.set("n", "<leader>bd", vim.cmd.bd)
 vim.keymap.set("n", "<leader>bl", vim.cmd.ls)
 vim.keymap.set("n", "<leader>be", vim.cmd.enew)
+vim.keymap.set("n", "<leader>bv", vim.cmd.vs)
+vim.keymap.set("n", "<leader>bh", vim.cmd.hs)
+
+local function listdir(directory)
+    local i, t, popen = 0, {}, io.popen
+    local pfile = popen('ls -a "'..directory..'"')
+    for filename in pfile:lines() do
+        if filename == ".." or filename == "." then
+            goto continue
+        end
+        i = i + 1
+        t[i] = string.gsub(filename, "%.lua", "")
+        ::continue::
+    end
+    pfile.close()
+    return t
+end
+
+-- commands
+vim.api.nvim_create_user_command('Conf',
+    function(opts)
+        vim.cmd(string.format(":e ~/.config/nvim/lua/myconf/%s.lua", opts.fargs[1]))
+    end,
+    { nargs = 1,
+      complete = function ()
+        return listdir("/home/blindenhahn/.config/nvim/lua/myconf")
+      end
+})
+
+vim.api.nvim_create_user_command('ConfPlugin',
+    function (opts)
+        vim.cmd(string.format(":e ~/.config/nvim/after/plugin/%s.lua", opts.fargs[1]))
+    end,
+    { nargs = 1,
+      complete = function ()
+          return listdir("/home/blindenhahn/.config/nvim/after/plugin")
+      end
+})
