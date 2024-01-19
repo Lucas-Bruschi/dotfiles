@@ -55,23 +55,17 @@ local function listdir(directory)
     return t
 end
 
--- commands
-vim.api.nvim_create_user_command('Conf',
-    function(opts)
-        vim.cmd(string.format(":e ~/.config/nvim/lua/myconf/%s.lua", opts.fargs[1]))
-    end,
-    { nargs = 1,
-      complete = function ()
-        return listdir("/home/blindenhahn/.config/nvim/lua/myconf")
-      end
-})
+local function create_command_dirlist_complete (command, directory)
+    vim.api.nvim_create_user_command(command,
+        function(opts)
+            vim.cmd(string.format(":e %s/%s.lua", directory, opts.fargs[1]))
+        end,
+        { nargs = 1,
+          complete = function ()
+            return listdir(directory)
+          end
+    })
+end
 
-vim.api.nvim_create_user_command('ConfPlugin',
-    function (opts)
-        vim.cmd(string.format(":e ~/.config/nvim/after/plugin/%s.lua", opts.fargs[1]))
-    end,
-    { nargs = 1,
-      complete = function ()
-          return listdir("/home/blindenhahn/.config/nvim/after/plugin")
-      end
-})
+create_command_dirlist_complete('Conf', '/home/blindenhahn/.config/nvim/lua/myconf')
+create_command_dirlist_complete('ConfPlugin', '/home/blindenhahn/.config/nvim/after/plugin')
