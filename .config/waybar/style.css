@@ -35,7 +35,7 @@ tooltip label {
     border-bottom: 3px solid white;
 }
 
-#memory, #cpu, #network, #pulseaudio, #battery {
+#memory, #cpu, #custom-temp, #network, #pulseaudio, #battery {
     padding: 0 10px;
 }
 

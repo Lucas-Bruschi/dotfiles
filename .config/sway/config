@@ -235,7 +235,7 @@ bindsym $mod+Shift+F12 exec shutdown now
 bindsym $mod+Shift+F9 exec reboot
 
 default_border pixel 1
-font pango:monospace 0
+font pango:monospace 1
 
 titlebar_border_thickness 0
 titlebar_padding 0

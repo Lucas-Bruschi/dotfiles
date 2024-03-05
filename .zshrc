@@ -110,3 +110,4 @@ export QT_QPA_PLATFORM=wayland
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
     exec tmux -2 new-session -A -s ${USER} >/dev/null 2>&1
 fi
+

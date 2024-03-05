@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "network", "pulseaudio", "battery"],
+    "modules-right": ["cpu", "custom/temp", "memory", "network", "pulseaudio", "battery"],
     "sway/window": {
        "max-length": 50,
     },
@@ -40,6 +40,13 @@
        "interval": 10,
        "format": "{usage}% ",
        "max-length": 10
+    },
+    "custom/temp": {
+       "exec": "/home/blindenhahn/.local/bin/temp.py",
+       "format": "{} {icon}",
+       "format-icons": ["", "", ""],
+       "interval": 10,
+       "return-type": "json"
     },
     "memory": {
        "interval": 30,
